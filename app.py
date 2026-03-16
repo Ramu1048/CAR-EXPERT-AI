@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 # ---------------- GEMINI API ----------------
-genai.configure(api_key="AIzaSyBt5PuC-4msz0uHqE5H2he3rzStx_I47g8")
+genai.configure(api_key="ENTER YOUR API KEY ")
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 
