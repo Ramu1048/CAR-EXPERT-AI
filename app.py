@@ -43,7 +43,7 @@ def write_chat_history(chat_history):
     with open(CHAT_FILE, "w", encoding="utf-8") as f:
         json.dump(chat_history, f, indent=4)
 
-# ---------------- SYSTEM PROMPT ----------------
+
 SYSTEM_PROMPT = """
 You are a professional automobile expert assistant.
 
@@ -84,7 +84,7 @@ car_keywords = [
     "mileage","range","electric","diesel","petrol","model"
 ]
 
-# ---------------- SAVE CHAT ----------------
+
 def save_chat(user_message, bot_reply):
     chat_history = load_chat_history()
 
@@ -95,12 +95,12 @@ def save_chat(user_message, bot_reply):
 
     write_chat_history(chat_history)
 
-# ---------------- CHECK IF CAR QUESTION ----------------
+
 def is_car_question(text):
     text = text.lower()
     return any(word in text for word in car_keywords)
 
-# ---------------- HOME PAGE ----------------
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -129,7 +129,7 @@ def chat():
 
         bot_reply = response.text
 
-        # Save chat
+     
         save_chat(user_message, bot_reply)
 
         return jsonify({"reply": bot_reply})
@@ -143,7 +143,7 @@ def chat():
             "details": str(e)
         }), 500
 
-# ---------------- GET CHAT HISTORY ----------------
+
 @app.route("/history")
 def history():
     return jsonify(load_chat_history())
